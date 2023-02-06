@@ -3,10 +3,6 @@ from calendar import month
 
 
 def pikkus(ikood:str)->bool:
-    """Funktsioon tagastab True, kui pikkus on 11 sümbolid
-    param str ikood: Inimese isikukoo
-    rtype: bool
-    """
     if len(ikood)==11:
         flag=True
     else:
@@ -14,10 +10,7 @@ def pikkus(ikood:str)->bool:
     return flag
 
 def esimine(ikood:str)->str:
-    """Kui esimene täht on [1,2,3,4,5,6], siis määrame sugu
-    param str ikood: Isikukood
-    rtype: str
-    """
+    
     ikood_list=list(map(int,ikood)) #[1,2,...]
     if ikood_list[0] in [1,3,5]:
         s="mees"
@@ -26,25 +19,19 @@ def esimine(ikood:str)->str:
     else:
         s="viga"
     return s
+
 def sunnipaev(ikood:str)->str:
     ikood_list=list(map(int,ikood)) 
-    """kui teine ja seitsme arv vastab sunnipaeva data 
-    param int ikood: isikuood sunnipaev
-    """
     y=int(ikood_list[1])+(ikood_list[2])
     m=int(ikood_list[3])+(ikood_list[4])
     d=int(ikood_list[5])+(ikood_list[6])
-
-    if (int(m)>0 and int(m)<13) and (int(d)>0 and int(d)<32):
-        if ikood_list[0] in [1,2]:
-            yy="18"
-        elif ikood_list[0] in [3,4]:
-            yy="19"
-        else:
-            yy="20"
-        spaev=(f"{d}.{m}.{yy}{y}")
+    if ikood_list[0] in [1,2]:
+        yy="18"
+    elif ikood_list[0] in [3,4]:
+        yy="19"
     else:
-        spaev="viga"
+        yy="20"
+    spaev=(f"{d}.{m}.{yy}{y}")
     return spaev
  
 
